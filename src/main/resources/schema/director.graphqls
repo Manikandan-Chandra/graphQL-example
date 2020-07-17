@@ -1,0 +1,14 @@
+type Director {
+    id: ID!
+    firstName: String!
+    lastName: String!
+}
+
+type Query {
+    findAllDirectors(limit:Int): [Director]!
+    countDirectors: Long!
+}
+
+type Mutation {
+    newDirector(firstName: String!, lastName: String!) : Director!
+}
