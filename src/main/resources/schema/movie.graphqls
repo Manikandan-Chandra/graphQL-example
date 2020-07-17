@@ -7,14 +7,28 @@ type Movie {
     director: Director
 }
 
-extend type Query {
+type Views {
+    title: String!
+    count: Int!
+}
+
+type Query {
+    #Get all movies
     findAllMovies: [Movie]!
+
+    #Get movies list by title
     findMoviesByTitle(title: String!): [Movie]!
+
+    #Get movies count
     countMovies: Long!
 }
 
-extend type Mutation {
+type Mutation {
     newMovie(title: String!, language: String, duration: Float, budget: Float, director: ID!) : Movie!
     deleteMovie(id: ID!) : Boolean
     updateMovieDuration(duration: Float!, id: ID!) : Movie!
+}
+
+type Subscription {
+    views(title: String): Views
 }
